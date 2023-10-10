@@ -10,7 +10,7 @@ const AddTodo = () => {
   const addTodo = async (todo) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/todos",
+        "https://bluehive-todo-api.onrender.com/api/todos",
         todo
       );
       return response.data;

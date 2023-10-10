@@ -8,12 +8,12 @@ import "../styles/global.css";
 import editButtonImage from "../assets/pencil.svg";
 
 const fetchTodos = async () => {
-  const response = await axios.get("http://localhost:5000/api/todos");
+  const response = await axios.get("https://bluehive-todo-api.onrender.com/api/todos");
   return response.data;
 };
 
 const updateTodoStatus = async ({ id, completed }) => {
-  const response = await axios.put(`http://localhost:5000/api/todos/${id}`, {
+  const response = await axios.put(`https://bluehive-todo-api.onrender.com/api/todos/${id}`, {
     completed,
   });
   return response.data;

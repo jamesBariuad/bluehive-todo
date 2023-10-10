@@ -7,7 +7,7 @@ const DeleteTodoButton = ({ itemId }) => {
   const queryClient = useQueryClient();
 
   const deleteTodoMutation = useMutation((itemId) =>
-    axios.delete(`http://localhost:5000/api/todos/${itemId}`)
+    axios.delete(`https://bluehive-todo-api.onrender.com/api/todos/${itemId}`)
   );
 
   const handleDeleteTodo = () => {

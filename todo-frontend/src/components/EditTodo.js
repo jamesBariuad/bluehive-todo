@@ -5,7 +5,7 @@ import styles from "../styles/EditTodo.module.css"
 
 const updateTodo = async ({ id, title }) => {
   try {
-    const response = await axios.put(`http://localhost:5000/api/todos/${id}`, { title });
+    const response = await axios.put(`https://bluehive-todo-api.onrender.com/api/todos/${id}`, { title });
     console.log(response.data)
   } catch (error) {
     throw new Error('Failed to update task');
