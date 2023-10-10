@@ -1,0 +1,27 @@
+.input_box {
+  height: 30px;
+}
+
+input {
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid black;
+  padding-left: 8px;
+}
+
+button {
+  height: 100%;
+  padding: 0 10px 0 10px;
+  border-radius: 0  10px 10px 0 ;
+  border: 1px solid black;
+}
+
+button:hover{
+    background-color: bisque;
+}
+
+button:active{
+    background-color: rgba(255, 228, 196, 0.719);
+}
+
+

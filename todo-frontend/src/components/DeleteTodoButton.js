@@ -1,6 +1,7 @@
 import React from "react";
 import { useQueryClient, useMutation } from "react-query";
 import axios from 'axios'
+import deleteButton from "../assets/delete.svg"
 
 const DeleteTodoButton = ({ itemId }) => {
   const queryClient = useQueryClient();
@@ -17,7 +18,7 @@ const DeleteTodoButton = ({ itemId }) => {
     });
   };
 
-  return <button onClick={handleDeleteTodo}>Delete</button>;
+  return <img  src={deleteButton} onClick={handleDeleteTodo} alt="delete" className="delete_button"></img>;
 };
 
 export default DeleteTodoButton;

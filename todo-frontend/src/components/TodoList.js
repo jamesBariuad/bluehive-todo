@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import DeleteTodoButton from "./DeleteTodoButton";
 import EditTodo from "./EditTodo";
+import styles from "../styles/TodoList.module.css";
+import "../styles/global.css";
+import editButtonImage from "../assets/pencil.svg";
 
 const fetchTodos = async () => {
   const response = await axios.get("http://localhost:5000/api/todos");
@@ -27,28 +30,44 @@ const TodoList = () => {
   });
 
   const [editId, setEditId] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); 
+  const [isEditing, setIsEditing] = useState(false);
   const toggleEditing = (todo) => {
-    setEditId(todo)
+    setEditId(todo);
     setIsEditing(!isEditing);
   };
-
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
 
   return (
-    <div>
-      <h2>Todo List</h2>
-      <div>
-        {todos.map((todo) => (
-          <div key={todo._id}>
-            {editId===todo._id?(
-              // Display the EditTodo component when editing
-              <EditTodo todo={todo} toggleEditing={toggleEditing} />
-            ) : (
-              // Display the task and othher buttons otherwise
-              <>
+    <div className={styles.todos_container}>
+      {todos.map((todo) => (
+        <div key={todo._id} className={styles.todo_item}>
+          {todo.completed ? (
+            <>
+              <div className={styles.item_left}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() =>
+                  updateStatusMutation.mutate({
+                    id: todo._id,
+                    completed: !todo.completed,
+                  })
+                }
+              />
+              <del>{todo.title}</del>
+              </div>
+              <DeleteTodoButton itemId={todo._id} />
+             
+            </>
+          ) : editId === todo._id ? (
+            // Display the EditTodo component when editing
+            <EditTodo todo={todo} toggleEditing={toggleEditing} />
+          ) : (
+            // Display the task and othher buttons otherwise
+            <>
+              <div className={styles.item_left}>
                 <input
                   type="checkbox"
                   checked={todo.completed}
@@ -59,14 +78,23 @@ const TodoList = () => {
                     })
                   }
                 />
+                <div className={styles.task}>
                 {todo.title}
+                </div>
+              </div>
+
+              <div className={styles.buttons}>
+                <img
+                  src={editButtonImage}
+                  onClick={() => toggleEditing(todo._id)}
+                  alt="pencil"
+                ></img>
                 <DeleteTodoButton itemId={todo._id} />
-                <button onClick={() => toggleEditing(todo._id)}>Edit</button>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+              </div>
+            </>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

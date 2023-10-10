@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useQueryClient, useMutation } from "react-query";
+import styles from "../styles/AddTodo.module.css"
 
 const AddTodo = () => {
   const [newTodo, setNewTodo] = useState("");
@@ -32,14 +33,14 @@ const AddTodo = () => {
   };
 
   return (
-    <div>
-      <input
+    <div className={styles.input_box}>
+      <input className={styles.input}
         type="text"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
-        placeholder="Enter a new todo"
+        placeholder="Enter a new todo here..."
       />
-      <button onClick={handleAddTodo}>Add Todo</button>
+      <button onClick={handleAddTodo}>Add</button>
     </div>
   );
 };

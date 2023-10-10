@@ -1,0 +1,18 @@
+.edit_form{
+    display: flex;
+    height: 30px;
+    font-size: 20px;
+    width: 100%;
+}
+.edit_form form{
+    display: flex;
+    width: 100%;
+}
+
+.edit_form form input{
+    width: 70%;
+}
+
+.edit_form form button{
+    width: 30%;
+}

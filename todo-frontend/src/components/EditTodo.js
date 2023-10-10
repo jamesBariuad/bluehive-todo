@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
+import styles from "../styles/EditTodo.module.css"
 
 const updateTodo = async ({ id, title }) => {
   try {
@@ -29,8 +30,9 @@ const EditTodo = ({ todo, toggleEditing }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+   
+      <div className={styles.edit_form} >
+        <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={editedTask}
@@ -38,7 +40,8 @@ const EditTodo = ({ todo, toggleEditing }) => {
         />
         <button type="submit">Update</button>
       </form>
-    </div>
+      </div>
+
   );
 };
 

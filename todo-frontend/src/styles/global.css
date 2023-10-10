@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  align-items: center;
+}
+
+.head {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(167, 163, 163);
+  border-radius: 10px 10px 0 0;
+}
+
+.todo-area {
+  background-color: rgb(235, 230, 230);
+}
+
+.pad {
+  width: 500px;
+  border-radius: 10px;
+  height: 80vh;
+  background-color: rgb(235, 230, 230);
+}
+
+input[type=checkbox]{
+    height: 25px;
+    width: 25px;
+}
+@media only screen and (max-width: 499px) {
+  .pad {
+    width: 90vw;
+  }
+}
